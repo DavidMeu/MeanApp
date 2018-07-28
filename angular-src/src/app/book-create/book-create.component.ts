@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -6,7 +6,8 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 @Component({
   selector: 'app-book-create',
   templateUrl: './book-create.component.html',
-  styleUrls: ['./book-create.component.css']
+  styleUrls: ['./book-create.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class BookCreateComponent implements OnInit {
 
