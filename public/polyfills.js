@@ -5473,7 +5473,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\David Meushar\Desktop\My_Mean_App\angular-src\src\polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! D:\שונות\מכון לב סמסטרים קודמים\תשעח א\הנדסת תוכנה לאינטרנט\project2\angular-src\src\polyfills.ts */"./src/polyfills.ts");
 
 
 /***/ })

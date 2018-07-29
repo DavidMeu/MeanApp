@@ -26,6 +26,7 @@ import { BookComponent } from "./book/book.component";
 import { BookCreateComponent } from "./book-create/book-create.component";
 import { BookDetailComponent } from "./book-detail/book-detail.component";
 import { BookEditComponent } from "./book-edit/book-edit.component";
+import { SearchComponent } from './search/search.component';
 
 //import {MatIconModule} from '@angular/material/icon';
 import {
@@ -46,6 +47,11 @@ const appRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
+  {
+    path: "search",
+    component: SearchComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: "dashboard",
     component: DashboardComponent,
@@ -90,7 +96,8 @@ export function tokenGetter() {
     BookComponent,
     BookCreateComponent,
     BookDetailComponent,
-    BookEditComponent
+    BookEditComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
