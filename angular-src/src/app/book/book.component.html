@@ -1,12 +1,4 @@
 <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
-<script>
-  function getRouterLink()
-  {
-    routerLinkBooks="['/book-details/', row._id]";
-    return routerLinkBooks;
-  } 
-  document.getElementById("trLast").router
-</script>
 <div class="button-row">
   <a mat-raised-button color="primary" [routerLink]="['/book-create']"><mat-icon>add</mat-icon></a>
 </div>
@@ -35,6 +27,6 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr id="trLast" mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]= "false? ['/book-details/', row._id] : []"></tr>
+    <tr id="trLast" mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]= "true? ['/book-details/', row._id] : []"></tr>
   </table>
 </div>
