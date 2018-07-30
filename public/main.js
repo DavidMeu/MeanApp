@@ -576,7 +576,7 @@ module.exports = ".example-container {\r\n  display: flex;\r\n  flex-direction: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">-->\r\n<div class=\"button-row\">\r\n  <a mat-raised-button color=\"primary\" [routerLink]=\"['/book-create']\"><mat-icon>add</mat-icon></a>\r\n</div>\r\n<div class=\"example-container mat-elevation-z8\">\r\n  <table mat-table #table [dataSource]=\"dataSource\">\r\n\r\n    <!--- Note that these columns can be defined in any order.\r\n          The actual rendered columns are set as a property on the row definition\" -->\r\n\r\n    <!-- Title Column -->\r\n    <ng-container matColumnDef=\"isbn\">\r\n      <th mat-header-cell *matHeaderCellDef> ISBN </th>\r\n      <td mat-cell *matCellDef=\"let element\" class=\"isbn-col\"> {{element.isbn}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Title Column -->\r\n    <ng-container matColumnDef=\"title\">\r\n      <th mat-header-cell *matHeaderCellDef> Title </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.title}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Author Column -->\r\n    <ng-container matColumnDef=\"author\">\r\n      <th mat-header-cell *matHeaderCellDef> Author </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.author}} </td>\r\n    </ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n    <tr id=\"trLast\" mat-row *matRowDef=\"let row; columns: displayedColumns;\" [routerLink]= \"true? ['/book-details/', row._id] : []\"></tr>\r\n  </table>\r\n</div>\r\n"
+module.exports = "<!--<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">-->\r\n<div class=\"button-row\">\r\n    <p id=\"pp\" >text</p>\r\n  <a mat-raised-button color=\"primary\"  [routerLink]=\"['/book-create']\"><mat-icon>add</mat-icon></a>\r\n</div>\r\n<div class=\"example-container mat-elevation-z8\">\r\n  <table mat-table #table [dataSource]=\"dataSource\">\r\n\r\n    <!--- Note that these columns can be defined in any order.\r\n          The actual rendered columns are set as a property on the row definition\" -->\r\n\r\n    <!-- Title Column -->\r\n    <ng-container matColumnDef=\"isbn\">\r\n      <th mat-header-cell *matHeaderCellDef> ISBN </th>\r\n      <td mat-cell *matCellDef=\"let element\" class=\"isbn-col\"> {{element.isbn}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Title Column -->\r\n    <ng-container matColumnDef=\"title\">\r\n      <th mat-header-cell *matHeaderCellDef> Title </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.title}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Author Column -->\r\n    <ng-container matColumnDef=\"author\">\r\n      <th mat-header-cell *matHeaderCellDef> Author </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.author}} </td>\r\n    </ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n    <tr id=\"trLast\" mat-row *matRowDef=\"let row; columns: displayedColumns;\" [routerLink]= \"true? ['/book-details/', row._id] : []\"></tr>\r\n  </table>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -646,7 +646,21 @@ var BookComponent = /** @class */ (function () {
         }, function (err) {
             console.log(err);
         });
+        /*var xxx=this.getParameter();
+        console.log(xxx);
+        document.getElementById('pp').addEventListener("click", function(){
+          alert(xxx);
+        });*/
     };
+    BookComponent.prototype.getParameter = function () {
+        //var x="123 ";
+        //console.log(this.parameter+","+x);
+        return this.parameter;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], BookComponent.prototype, "parameter", void 0);
     BookComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-book',
@@ -680,7 +694,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Dashboard</h2>\r\n<p>Welcome to your Dashboard</p>\r\n<app-book></app-book>\r\n"
+module.exports = "<h2 class=\"page-header\">Dashboard</h2>\r\n<p>Welcome to your Dashboard</p>\r\n<app-book [parameter]='\"dashboard\"'></app-book>\r\n"
 
 /***/ }),
 
@@ -1215,7 +1229,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Search</h2>\n<p>Search for books here</p>\n<app-book></app-book>"
+module.exports = "<h2 class=\"page-header\">Search</h2>\n<p>Search for books here</p>\n<app-book [parameter]='\"search\"'></app-book>"
 
 /***/ }),
 

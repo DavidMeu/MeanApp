@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 import { ApiService } from '../services//api.service';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs';
+import { $ } from 'protractor';
 
 export class BookDataSource extends DataSource<any> {
   constructor(private api: ApiService) {
@@ -30,6 +31,9 @@ export class BookComponent implements OnInit {
   dataSource = new BookDataSource(this.api);
   constructor(private api: ApiService) { }
 
+  @Input()
+  public parameter: string;
+
   ngOnInit() {
     this.api.getBooks()
       .subscribe(res => {
@@ -38,6 +42,17 @@ export class BookComponent implements OnInit {
       }, err => {
         console.log(err);
       });
+
+      /*var xxx=this.getParameter();
+      console.log(xxx);
+      document.getElementById('pp').addEventListener("click", function(){
+        alert(xxx);
+      });*/
   }
 
+  getParameter() {
+    //var x="123 ";
+    //console.log(this.parameter+","+x);
+    return this.parameter;
+  }
 }
