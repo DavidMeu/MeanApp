@@ -162,7 +162,7 @@ var appRoutes = [
         canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_19__["AuthGuard"]]
     },
     {
-        path: "dashboard",
+        path: "dashboard/:id",
         component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["DashboardComponent"],
         canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_19__["AuthGuard"]]
     },
@@ -426,6 +426,9 @@ var BookDetailComponent = /** @class */ (function () {
     };
     BookDetailComponent.prototype.ngOnInit = function () {
         this.getBookDetails(this.route.snapshot.params['id']);
+        /*var ans='xx';
+        ans=this.route.snapshot.params.id;
+        alert('ans: '+ans);*/
     };
     BookDetailComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -576,7 +579,7 @@ module.exports = ".example-container {\r\n  display: flex;\r\n  flex-direction: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">-->\r\n<div class=\"button-row\">\r\n    <p id=\"pp\" >text</p>\r\n  <a mat-raised-button color=\"primary\"  [routerLink]=\"['/book-create']\"><mat-icon>add</mat-icon></a>\r\n</div>\r\n<div class=\"example-container mat-elevation-z8\">\r\n  <table mat-table #table [dataSource]=\"dataSource\">\r\n\r\n    <!--- Note that these columns can be defined in any order.\r\n          The actual rendered columns are set as a property on the row definition\" -->\r\n\r\n    <!-- Title Column -->\r\n    <ng-container matColumnDef=\"isbn\">\r\n      <th mat-header-cell *matHeaderCellDef> ISBN </th>\r\n      <td mat-cell *matCellDef=\"let element\" class=\"isbn-col\"> {{element.isbn}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Title Column -->\r\n    <ng-container matColumnDef=\"title\">\r\n      <th mat-header-cell *matHeaderCellDef> Title </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.title}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Author Column -->\r\n    <ng-container matColumnDef=\"author\">\r\n      <th mat-header-cell *matHeaderCellDef> Author </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.author}} </td>\r\n    </ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n    <tr id=\"trLast\" mat-row *matRowDef=\"let row; columns: displayedColumns;\" [routerLink]= \"true? ['/book-details/', row._id] : []\"></tr>\r\n  </table>\r\n</div>\r\n"
+module.exports = "<!--<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">-->\r\n<div class=\"button-row\">\r\n    <!--<p id=\"pp\" >text</p>-->\r\n  <a id=\"addBookButton\" mat-raised-button color=\"primary\"  [routerLink]=\"['/dashboard', 'book-create']\"><mat-icon>add</mat-icon></a>\r\n  <!--<a id=\"addBookButton\" mat-raised-button color=\"primary\"  [routerLink]=\"['/book-create']\"><mat-icon>add</mat-icon></a>-->\r\n</div>\r\n<div class=\"example-container mat-elevation-z8\">\r\n  <table mat-table #table [dataSource]=\"dataSource\">\r\n\r\n    <!--- Note that these columns can be defined in any order.\r\n          The actual rendered columns are set as a property on the row definition\" -->\r\n\r\n    <!-- Title Column -->\r\n    <ng-container matColumnDef=\"isbn\">\r\n      <th mat-header-cell *matHeaderCellDef> ISBN </th>\r\n      <td mat-cell *matCellDef=\"let element\" class=\"isbn-col\"> {{element.isbn}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Title Column -->\r\n    <ng-container matColumnDef=\"title\">\r\n      <th mat-header-cell *matHeaderCellDef> Title </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.title}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Author Column -->\r\n    <ng-container matColumnDef=\"author\">\r\n      <th mat-header-cell *matHeaderCellDef> Author </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.author}} </td>\r\n    </ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n    <tr id=\"trLast\" mat-row *matRowDef=\"let row; columns: displayedColumns;\" [routerLink]= \"true? ['/book-details/', row._id] : []\"></tr>\r\n  </table>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -592,7 +595,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BookDataSource", function() { return BookDataSource; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BookComponent", function() { return BookComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_api_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services//api.service */ "./src/app/services/api.service.ts");
+/* harmony import */ var _services_api_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/api.service */ "./src/app/services/api.service.ts");
 /* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/collections */ "./node_modules/@angular/cdk/esm5/collections.es5.js");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -646,15 +649,13 @@ var BookComponent = /** @class */ (function () {
         }, function (err) {
             console.log(err);
         });
-        /*var xxx=this.getParameter();
-        console.log(xxx);
-        document.getElementById('pp').addEventListener("click", function(){
-          alert(xxx);
-        });*/
+        var param = this.getParameter();
+        document.getElementById('addBookButton').addEventListener("click", function () {
+            //alert(param);
+            alert('element:' + this.parentElement.localName);
+        });
     };
     BookComponent.prototype.getParameter = function () {
-        //var x="123 ";
-        //console.log(this.parameter+","+x);
         return this.parameter;
     };
     __decorate([
@@ -694,7 +695,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Dashboard</h2>\r\n<p>Welcome to your Dashboard</p>\r\n<app-book [parameter]='\"dashboard\"'></app-book>\r\n"
+module.exports = "<h2 class=\"page-header\">Dashboard</h2>\r\n<p>Welcome to your Dashboard</p>\r\n<app-book *ngIf=\"getInnerContent()=='book'\" [parameter]='\"dashboard\"'></app-book>\r\n<app-book-create *ngIf=\"getInnerContent()=='book-create'\"></app-book-create>\r\n<p id='test'> click. </p>"
 
 /***/ }),
 
@@ -709,6 +710,8 @@ module.exports = "<h2 class=\"page-header\">Dashboard</h2>\r\n<p>Welcome to your
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/api.service */ "./src/app/services/api.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -719,10 +722,26 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent() {
+    function DashboardComponent(route, api, router) {
+        this.route = route;
+        this.api = api;
+        this.router = router;
+        //this.innerContent=this.route.snapshot.params['id'];
     }
     DashboardComponent.prototype.ngOnInit = function () {
+        this.innerContent = this.route.snapshot.params['id'];
+        alert('innerConetnt: ' + this.innerContent);
+        console.log('innerConetnt: ' + this.innerContent);
+        var x = this.getInnerContent();
+        document.getElementById('test').addEventListener("click", function () {
+            document.getElementById('test').innerHTML = x;
+        });
+    };
+    DashboardComponent.prototype.getInnerContent = function () {
+        return this.innerContent;
     };
     DashboardComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -730,7 +749,7 @@ var DashboardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./dashboard.component.html */ "./src/app/dashboard/dashboard.component.html"),
             styles: [__webpack_require__(/*! ./dashboard.component.css */ "./src/app/dashboard/dashboard.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _services_api_service__WEBPACK_IMPORTED_MODULE_2__["ApiService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], DashboardComponent);
     return DashboardComponent;
 }());
@@ -963,7 +982,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">Book Store App</a>\r\n    </div>\r\n    <div id=\"navbar\" class=\"collapse navbar-collapse\">\r\n      <ul class=\"nav navbar-nav navbar-left\">\r\n        <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/']\">Home</a></li>\r\n      </ul>\r\n\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n        <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/search']\">Search</a></li>\r\n        <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/dashboard']\">Dashboard</a></li>\r\n        <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/profile']\">Profile</a></li>\r\n        <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/login']\">Login</a></li>\r\n        <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/register']\">Register</a></li>\r\n        <li *ngIf=\"authService.loggedIn()\"><a (click)=\"onLogoutClick()\" href=\"#\">Logout</a></li>\r\n\r\n      </ul>\r\n    </div><!--/.nav-collapse -->\r\n  </div>\r\n</nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-default\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">Book Store App</a>\r\n    </div>\r\n    <div id=\"navbar\" class=\"collapse navbar-collapse\">\r\n      <ul class=\"nav navbar-nav navbar-left\">\r\n        <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/']\">Home</a></li>\r\n      </ul>\r\n\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n        <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/search']\">Search</a></li>\r\n        <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/dashboard', 'book']\">Dashboard</a></li>\r\n        <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/profile']\">Profile</a></li>\r\n        <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/login']\">Login</a></li>\r\n        <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/register']\">Register</a></li>\r\n        <li *ngIf=\"authService.loggedIn()\"><a (click)=\"onLogoutClick()\" href=\"#\">Logout</a></li>\r\n\r\n      </ul>\r\n    </div><!--/.nav-collapse -->\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -1332,6 +1351,7 @@ var ApiService = /** @class */ (function () {
     };
     ApiService.prototype.getBook = function (id) {
         var url = apiUrl + "/" + id;
+        //alert("url: "+url);
         return this.http.get(url, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     ApiService.prototype.postBook = function (data) {

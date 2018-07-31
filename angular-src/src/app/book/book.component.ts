@@ -1,5 +1,5 @@
 import { Component, OnInit , Input} from '@angular/core';
-import { ApiService } from '../services//api.service';
+import { ApiService } from '../services/api.service';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs';
 import { $ } from 'protractor';
@@ -43,16 +43,14 @@ export class BookComponent implements OnInit {
         console.log(err);
       });
 
-      /*var xxx=this.getParameter();
-      console.log(xxx);
-      document.getElementById('pp').addEventListener("click", function(){
-        alert(xxx);
-      });*/
+      var param=this.getParameter();
+      document.getElementById('addBookButton').addEventListener("click", function(){
+        //alert(param);
+        alert('element:'+ this.parentElement.localName);
+      });
   }
 
   getParameter() {
-    //var x="123 ";
-    //console.log(this.parameter+","+x);
     return this.parameter;
   }
 }

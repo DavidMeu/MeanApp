@@ -1,3 +1,5 @@
 <h2 class="page-header">Dashboard</h2>
 <p>Welcome to your Dashboard</p>
-<app-book [parameter]='"dashboard"'></app-book>
+<app-book *ngIf="getInnerContent()=='book'" [parameter]='"dashboard"'></app-book>
+<app-book-create *ngIf="getInnerContent()=='book-create'"></app-book-create>
+<p id='test'> click. </p>

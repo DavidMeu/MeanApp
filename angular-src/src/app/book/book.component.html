@@ -1,7 +1,8 @@
 <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
 <div class="button-row">
-    <p id="pp" >text</p>
-  <a mat-raised-button color="primary"  [routerLink]="['/book-create']"><mat-icon>add</mat-icon></a>
+    <!--<p id="pp" >text</p>-->
+  <a id="addBookButton" mat-raised-button color="primary"  [routerLink]="['/dashboard', 'book-create']"><mat-icon>add</mat-icon></a>
+  <!--<a id="addBookButton" mat-raised-button color="primary"  [routerLink]="['/book-create']"><mat-icon>add</mat-icon></a>-->
 </div>
 <div class="example-container mat-elevation-z8">
   <table mat-table #table [dataSource]="dataSource">

@@ -32,6 +32,8 @@ export class BookDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getBookDetails(this.route.snapshot.params['id']);
+    /*var ans='xx';
+    ans=this.route.snapshot.params.id;
+    alert('ans: '+ans);*/
   }
-
 }

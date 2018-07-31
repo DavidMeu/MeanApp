@@ -43,6 +43,7 @@ export class ApiService {
 
   getBook(id: string): Observable<any> {
     const url = `${apiUrl}/${id}`;
+    //alert("url: "+url);
     return this.http.get(url, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
@@ -70,5 +71,4 @@ export class ApiService {
         catchError(this.handleError)
       );
   }
-
 }
