@@ -46,7 +46,7 @@ export class BookComponent implements OnInit {
       var param=this.getParameter();
       document.getElementById('addBookButton').addEventListener("click", function(){
         //alert(param);
-        alert('element:'+ this.parentElement.localName);
+        //alert('element:'+ this.parentElement.localName);
       });
   }
 

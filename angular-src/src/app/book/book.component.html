@@ -1,7 +1,7 @@
 <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
 <div class="button-row">
     <!--<p id="pp" >text</p>-->
-  <a id="addBookButton" mat-raised-button color="primary"  [routerLink]="['/dashboard', 'book-create']"><mat-icon>add</mat-icon></a>
+  <a id="addBookButton" mat-raised-button color="primary"  [routerLink]="['/dashboard', 'book-create', '']"><mat-icon>add</mat-icon></a>
   <!--<a id="addBookButton" mat-raised-button color="primary"  [routerLink]="['/book-create']"><mat-icon>add</mat-icon></a>-->
 </div>
 <div class="example-container mat-elevation-z8">
@@ -29,6 +29,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr id="trLast" mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]= "true? ['/book-details/', row._id] : []"></tr>
+    <tr id="trLast" mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]= "['/dashboard', 'book-details', row._id]"></tr>
+    <!--<tr id="trLast" mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]= "['/book-details/', row._id]"></tr>-->
   </table>
 </div>
