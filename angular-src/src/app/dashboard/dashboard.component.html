@@ -1,6 +1,7 @@
 <h2 class="page-header">Dashboard</h2>
 <p>Welcome to your Dashboard</p>
-<app-book *ngIf="getInnerContent()=='book'" [parameter]='"dashboard"'></app-book>
-<app-book-create *ngIf="getInnerContent()=='book-create'"></app-book-create>
-<!--<app-book-details *ngIf="getInnerContent()=='book-details'"></app-book-details>-->
-<p id='test'> click. </p>
+<app-book *ngIf="getInnerContent()=='book'" [parameter]='"/dashboard"'></app-book>
+<app-book-create *ngIf="getInnerContent()=='book-create'" [parameter]='"/dashboard"'></app-book-create>
+<app-book-detail *ngIf="getInnerContent()=='book-details'" [parameter]='"/dashboard"'></app-book-detail>
+<app-book-edit *ngIf="getInnerContent()=='book-edit'" [parameter]='"/dashboard"'></app-book-edit>
+<!--<p id='test'> click. </p>-->

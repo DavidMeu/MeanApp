@@ -51,6 +51,7 @@ export class BookComponent implements OnInit {
   }
 
   getParameter() {
+    console.log('parameter: '+this.parameter);
     return this.parameter;
   }
 }

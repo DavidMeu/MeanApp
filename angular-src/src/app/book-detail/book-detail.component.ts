@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
@@ -11,6 +11,9 @@ export class BookDetailComponent implements OnInit {
 
   book = {};
   constructor(private route: ActivatedRoute, private api: ApiService, private router: Router) { }
+
+  @Input()
+  public parameter: string;
 
   getBookDetails(id) {
     this.api.getBook(id)
@@ -31,9 +34,17 @@ export class BookDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getBookDetails(this.route.snapshot.params['id']);
+    /*var id=this.route.snapshot.params['id'];
+    var id2=this.route.snapshot.params['id2'];
+    alert('Details: id: '+id+' id2: '+id2);*/
+    this.getBookDetails(this.route.snapshot.params['id2']);
     /*var ans='xx';
     ans=this.route.snapshot.params.id;
     alert('ans: '+ans);*/
+  }
+
+  getParameter() {
+    console.log('parameter: '+this.parameter);
+    return this.parameter;
   }
 }

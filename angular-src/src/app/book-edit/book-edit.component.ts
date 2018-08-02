@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -21,6 +21,9 @@ export class BookEditComponent implements OnInit {
   published_year = '';
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) { }
 
+  @Input()
+  public parameter: string;
+
   getBook(id) {
     this.api.getBook(id).subscribe(data => {
       this.id = data._id;
@@ -39,7 +42,7 @@ export class BookEditComponent implements OnInit {
     this.api.updateBook(this.id, form)
       .subscribe(res => {
           const id = res['_id'];
-          this.router.navigate(['/book-details', id]);
+          this.router.navigate([this.getParameter(), 'book-details', id]);
         }, (err) => {
           console.log(err);
         }
@@ -47,11 +50,11 @@ export class BookEditComponent implements OnInit {
   }
 
   bookDetails() {
-    this.router.navigate(['/book-details', this.id]);
+    this.router.navigate([this.getParameter(), 'book-details', this.id]);
   }
 
   ngOnInit() {
-    this.getBook(this.route.snapshot.params['id']);
+    this.getBook(this.route.snapshot.params['id2']);
     this.bookForm = this.formBuilder.group({
       'isbn' : [null, Validators.required],
       'title' : [null, Validators.required],
@@ -62,4 +65,8 @@ export class BookEditComponent implements OnInit {
     });
   }
 
+  getParameter() {
+    console.log('parameter: '+this.parameter);
+    return this.parameter;
+  }
 }

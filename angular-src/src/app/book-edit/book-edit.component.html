@@ -1,5 +1,6 @@
 <div class="button-row">
   <a mat-raised-button color="primary" (click)="bookDetails()"><mat-icon>show</mat-icon></a>
+  <!--<a mat-raised-button color="primary" (click)="bookDetails()"><mat-icon>show</mat-icon></a>-->
 </div>
 <form [formGroup]="bookForm" (ngSubmit)="onFormSubmit(bookForm.value)">
   <mat-form-field class="example-full-width">
@@ -24,8 +25,8 @@
     </mat-error>
   </mat-form-field>
   <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Description" formControlName="description"
-           [errorStateMatcher]="matcher"></textarea>
+    <input matInput placeholder="Description" formControlName="description"
+           [errorStateMatcher]="matcher">
     <mat-error>
       <span *ngIf="!bookForm.get('description').valid && bookForm.get('description').touched">Please enter Book Description</span>
     </mat-error>

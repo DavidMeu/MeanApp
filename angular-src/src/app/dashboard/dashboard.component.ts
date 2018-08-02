@@ -14,25 +14,18 @@ export class DashboardComponent implements OnInit {
     //this.innerContent=this.route.snapshot.params['id'];
     router.events.subscribe((val)=>{
       if(val instanceof NavigationEnd) {
-        var old=this.innerContent;
         this.innerContent=this.route.snapshot.params['id'];
-        var neww=this.innerContent;
-        //alert('old: '+old+', new: '+neww);
-        var id2=this.route.snapshot.params['id2'];
-        alert('id2: '+id2);
+        //var id2=this.route.snapshot.params['id2'];
+        //alert('id: '+neww+ ' id2: '+id2);
       }
     });
    }
 
   ngOnInit() {
     this.innerContent=this.route.snapshot.params['id'];
-    //alert('innerConetnt: '+ this.innerContent);
     console.log('innerConetnt: '+ this.innerContent);
 
-    /*var x=function() {
-      return this.getInnerContent();
-    }
-    document.getElementById('test').addEventListener("click", function(){
+    /*document.getElementById('test').addEventListener("click", function(){
       document.getElementById('test').innerHTML=x();
     });*/
   }

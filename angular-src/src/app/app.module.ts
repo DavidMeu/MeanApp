@@ -48,7 +48,7 @@ const appRoutes: Routes = [
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
   {
-    path: "search",
+    path: "search/:id/:id2",
     component: SearchComponent,
     canActivate: [AuthGuard]
   },
@@ -64,7 +64,8 @@ const appRoutes: Routes = [
     data: { title: 'Book List' }
   },
   {
-    path: "book-details/:id",
+    //path: "book-details/:id",
+    path: "book-details",
     component: BookDetailComponent,
     data: { title: "Book Details" }
   },
@@ -74,7 +75,8 @@ const appRoutes: Routes = [
     data: { title: "Create Book" }
   },
   {
-    path: "book-edit/:id",
+    //path: "book-edit/:id",
+    path: "book-edit",
     component: BookEditComponent,
     data: { title: "Edit Book" }
   }

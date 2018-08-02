@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -20,11 +20,14 @@ export class BookCreateComponent implements OnInit {
   published_year = '';
   constructor(private router: Router, private api: ApiService, private formBuilder: FormBuilder) { }
 
+  @Input()
+  public parameter: string;
+
   onFormSubmit(form: NgForm) {
     this.api.postBook(form)
       .subscribe(res => {
           const id = res['_id'];
-          this.router.navigate(['/book-details', id]);
+          this.router.navigate([this.getParameter(), 'book-details', id]);
         }, (err) => {
           console.log(err);
         });
@@ -41,4 +44,8 @@ export class BookCreateComponent implements OnInit {
     });
   }
 
+  getParameter() {
+    console.log('parameter: '+this.parameter);
+    return this.parameter;
+  }
 }

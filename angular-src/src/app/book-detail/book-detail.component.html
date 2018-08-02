@@ -1,5 +1,5 @@
 <div class="button-row">
-  <a mat-raised-button color="primary" [routerLink]="['/books']"><mat-icon>list</mat-icon></a>
+  <a mat-raised-button color="primary" [routerLink]="[getParameter(), 'book', '']"><mat-icon>list</mat-icon></a>
 </div>
 <mat-card class="example-card">
   <mat-card-header>
@@ -21,7 +21,7 @@
     </dl>
   </mat-card-content>
   <mat-card-actions>
-    <a mat-raised-button color="primary" [routerLink]="['/book-edit', book._id]"><mat-icon>edit</mat-icon></a>
+    <a mat-raised-button color="primary" [routerLink]="[getParameter(), 'book-edit', book._id]"><mat-icon>edit</mat-icon></a>
     <a mat-raised-button color="warn" (click)="deleteBook(book._id)"><mat-icon>delete</mat-icon></a>
   </mat-card-actions>
 </mat-card>
