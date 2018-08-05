@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
@@ -26,11 +26,20 @@ export class BookDetailComponent implements OnInit {
   deleteBook(id) {
     this.api.deleteBook(id)
       .subscribe(res => {
-          this.router.navigate(['/books']);
-        }, (err) => {
-          console.log(err);
-        }
+        this.router.navigate([this.getParameter(), 'book', '']);
+      }, (err) => {
+        console.log(err);
+      }
       );
+  }
+
+  purchaseBook(id) {
+    this.api.purchaseBook(id)
+      .subscribe(res => {
+        this.router.navigate(['/dashboard', 'book', '']);
+      }, (err) => {
+        console.log(err);
+      });
   }
 
   ngOnInit() {
@@ -44,7 +53,7 @@ export class BookDetailComponent implements OnInit {
   }
 
   getParameter() {
-    console.log('parameter: '+this.parameter);
+    console.log('parameter: ' + this.parameter);
     return this.parameter;
   }
 }

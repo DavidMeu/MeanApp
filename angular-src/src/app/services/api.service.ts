@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, throwError, observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 
@@ -70,5 +70,9 @@ export class ApiService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  purchaseBook(id: string): Observable<any> {
+    return this.getBook(id);
   }
 }

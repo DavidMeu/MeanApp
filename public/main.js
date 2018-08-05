@@ -370,7 +370,7 @@ var BookCreateComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".example-card {\r\n  max-width: 500px;\r\n}\r\n\r\n.button-row {\r\n  margin: 10px 0;\r\n}\r\n"
+module.exports = ".example-card {\r\n  max-width: 500px;\r\n}\r\n\r\n.button-row {\r\n  margin: 10px 0;\r\n}\r\n\r\n.a-test {\r\n  color: white;\r\n  background-color: green;\r\n}"
 
 /***/ }),
 
@@ -381,7 +381,7 @@ module.exports = ".example-card {\r\n  max-width: 500px;\r\n}\r\n\r\n.button-row
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"button-row\">\r\n  <a mat-raised-button color=\"primary\" [routerLink]=\"[getParameter(), 'book', '']\"><mat-icon>list</mat-icon></a>\r\n</div>\r\n<mat-card class=\"example-card\">\r\n  <mat-card-header>\r\n    <mat-card-title><h2>{{book.title}}</h2></mat-card-title>\r\n    <mat-card-subtitle>{{book.description}}</mat-card-subtitle>\r\n  </mat-card-header>\r\n  <mat-card-content>\r\n    <dl>\r\n      <dt>ISBN:</dt>\r\n      <dd>{{book.isbn}}</dd>\r\n      <dt>Author:</dt>\r\n      <dd>{{book.author}}</dd>\r\n      <dt>Publisher:</dt>\r\n      <dd>{{book.publisher}}</dd>\r\n      <dt>Publish Year:</dt>\r\n      <dd>{{book.published_year}}</dd>\r\n      <dt>Update Date:</dt>\r\n      <dd>{{book.updated_date | date}}</dd>\r\n    </dl>\r\n  </mat-card-content>\r\n  <mat-card-actions>\r\n    <a mat-raised-button color=\"primary\" [routerLink]=\"[getParameter(), 'book-edit', book._id]\"><mat-icon>edit</mat-icon></a>\r\n    <a mat-raised-button color=\"warn\" (click)=\"deleteBook(book._id)\"><mat-icon>delete</mat-icon></a>\r\n  </mat-card-actions>\r\n</mat-card>\r\n"
+module.exports = "<div class=\"button-row\">\r\n  <a mat-raised-button color=\"primary\" [routerLink]=\"[getParameter(), 'book', '']\"><mat-icon>list</mat-icon></a>\r\n</div>\r\n<mat-card class=\"example-card\">\r\n  <mat-card-header>\r\n    <mat-card-title><h2>{{book.title}}</h2></mat-card-title>\r\n    <mat-card-subtitle>{{book.description}}</mat-card-subtitle>\r\n  </mat-card-header>\r\n  <mat-card-content>\r\n    <dl>\r\n      <dt>ISBN:</dt>\r\n      <dd>{{book.isbn}}</dd>\r\n      <dt>Author:</dt>\r\n      <dd>{{book.author}}</dd>\r\n      <dt>Publisher:</dt>\r\n      <dd>{{book.publisher}}</dd>\r\n      <dt>Publish Year:</dt>\r\n      <dd>{{book.published_year}}</dd>\r\n      <dt>Update Date:</dt>\r\n      <dd>{{book.updated_date | date}}</dd>\r\n    </dl>\r\n  </mat-card-content>\r\n  <mat-card-actions>\r\n    <a *ngIf=\"getParameter()!='/search'\" mat-raised-button color=\"primary\" [routerLink]=\"[getParameter(), 'book-edit', book._id]\"><mat-icon>edit</mat-icon></a>\r\n    <a *ngIf=\"getParameter()!='/search'\" mat-raised-button color=\"warn\" (click)=\"deleteBook(book._id)\"><mat-icon>delete</mat-icon></a>\r\n    <a *ngIf=\"getParameter()=='/search'\" mat-raised-button class=\"a-test\" (click)=\"purchaseBook(book._id)\"><mat-icon>get_app</mat-icon></a>\r\n  </mat-card-actions>\r\n</mat-card>\r\n"
 
 /***/ }),
 
@@ -429,7 +429,16 @@ var BookDetailComponent = /** @class */ (function () {
         var _this = this;
         this.api.deleteBook(id)
             .subscribe(function (res) {
-            _this.router.navigate(['/books']);
+            _this.router.navigate([_this.getParameter(), 'book', '']);
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    BookDetailComponent.prototype.purchaseBook = function (id) {
+        var _this = this;
+        this.api.purchaseBook(id)
+            .subscribe(function (res) {
+            _this.router.navigate(['/dashboard', 'book', '']);
         }, function (err) {
             console.log(err);
         });
@@ -1420,6 +1429,9 @@ var ApiService = /** @class */ (function () {
         var url = apiUrl + "/" + id;
         return this.http.delete(url, httpOptions)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+    };
+    ApiService.prototype.purchaseBook = function (id) {
+        return this.getBook(id);
     };
     ApiService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
