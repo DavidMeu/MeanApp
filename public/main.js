@@ -984,7 +984,7 @@ var LoginComponent = /** @class */ (function () {
             if (data.success) {
                 _this.authService.storeUserData(data.token, data.user);
                 _this._flashMessagesService.show('You are logged in', { cssClass: 'alert-success', timeout: 5000 });
-                _this.router.navigate(['/dashboard']);
+                _this.router.navigate(['/dashboard', 'book', '']);
             }
             else {
                 _this._flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 5000 });
@@ -1369,6 +1369,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth.service */ "./src/app/services/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1382,13 +1383,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var httpOptions = {
     headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json' })
 };
 var apiUrl = '/api';
 var ApiService = /** @class */ (function () {
-    function ApiService(http) {
+    function ApiService(http, authService) {
         this.http = http;
+        this.authService = authService;
     }
     ApiService.prototype.handleError = function (error) {
         if (error.error instanceof ErrorEvent) {
@@ -1431,13 +1434,26 @@ var ApiService = /** @class */ (function () {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     ApiService.prototype.purchaseBook = function (id) {
-        return this.getBook(id);
+        var _this = this;
+        //return this.getBook(id);
+        var url = apiUrl + "/purchase/" + id;
+        var book = this.getBook(id);
+        //user2: Object;
+        this.authService.getProfile().subscribe(function (profile) {
+            _this.user2 = profile.user;
+            alert(profile);
+        }, function (err) {
+            console.log(err);
+            return false;
+        });
+        alert("profile: " + this.user2);
+        return this.http.get(url, /*'book',*/ httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     ApiService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
     ], ApiService);
     return ApiService;
 }());

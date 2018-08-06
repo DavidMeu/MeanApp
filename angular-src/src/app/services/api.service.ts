@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError, observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
+import {AuthService} from './auth.service';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -13,7 +14,9 @@ const apiUrl = '/api';
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  user2:Object;
+
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -73,6 +76,20 @@ export class ApiService {
   }
 
   purchaseBook(id: string): Observable<any> {
-    return this.getBook(id);
+    //return this.getBook(id);
+    const url = `${apiUrl}/purchase/${id}`;
+    var book=this.getBook(id);
+    //user2: Object;
+    this.authService.getProfile().subscribe(profile => {
+      this.user2 = profile.user;
+      alert(profile);
+    }, err=>{
+      console.log(err);
+      return false;
+    });
+    alert("profile: "+this.user2);
+    return this.http.get(url, /*'book',*/ httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 }

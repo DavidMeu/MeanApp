@@ -3,6 +3,12 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Book = require('../models/Book.js');
 
+/* Purchase Book*/
+router.get('/purchase/:id', function(req, res, next) {
+  console.log(req.params.id);
+  res.json('true');
+});
+
 /* GET ALL BOOKS */
 router.get('/', function(req, res, next) {
   Book.find(function (err, products) {
