@@ -1393,6 +1393,17 @@ var ApiService = /** @class */ (function () {
         this.http = http;
         this.authService = authService;
     }
+    ApiService.prototype.ngOnInit = function () {
+        var _this = this;
+        this.authService.getProfile().subscribe(function (profile) {
+            _this.user2 = profile.user;
+        }, function (err) {
+            console.log(err);
+            return false;
+        });
+        console.log('_profile: ' + this.user2);
+        alert('test api service');
+    };
     ApiService.prototype.handleError = function (error) {
         if (error.error instanceof ErrorEvent) {
             // A client-side or network error occurred. Handle it accordingly.
@@ -1434,19 +1445,19 @@ var ApiService = /** @class */ (function () {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     ApiService.prototype.purchaseBook = function (id) {
-        var _this = this;
         //return this.getBook(id);
         var url = apiUrl + "/purchase/" + id;
         var book = this.getBook(id);
-        //user2: Object;
+        var email, username;
         this.authService.getProfile().subscribe(function (profile) {
-            _this.user2 = profile.user;
-            alert(profile);
+            email = profile.user.email;
+            username = profile.user.username;
+            alert('profile: ' + username + ", " + email);
         }, function (err) {
             console.log(err);
             return false;
         });
-        alert("profile: " + this.user2);
+        //alert("User1: "+user1);
         return this.http.get(url, /*'book',*/ httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     ApiService = __decorate([

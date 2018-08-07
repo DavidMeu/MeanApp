@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable , OnInit } from '@angular/core';
 import { Observable, of, throwError, observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
@@ -12,11 +12,23 @@ const apiUrl = '/api';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class ApiService implements OnInit {
 
   user2:Object;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
+
+  ngOnInit() {
+    this.authService.getProfile().subscribe(profile=>{
+    this.user2 = profile.user;
+  },
+  err=>{
+    console.log(err);
+    return false;
+  });
+  console.log('_profile: '+this.user2);
+    alert('test api service');
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -79,15 +91,16 @@ export class ApiService {
     //return this.getBook(id);
     const url = `${apiUrl}/purchase/${id}`;
     var book=this.getBook(id);
-    //user2: Object;
+    var email,username;
     this.authService.getProfile().subscribe(profile => {
-      this.user2 = profile.user;
-      alert(profile);
+      email = profile.user.email;
+      username=profile.user.username;
+      alert('profile: '+username+", "+email);
     }, err=>{
       console.log(err);
       return false;
     });
-    alert("profile: "+this.user2);
+    //alert("User1: "+user1);
     return this.http.get(url, /*'book',*/ httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
