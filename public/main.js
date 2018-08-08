@@ -435,22 +435,16 @@ var BookDetailComponent = /** @class */ (function () {
         });
     };
     BookDetailComponent.prototype.purchaseBook = function (id) {
-        var _this = this;
-        this.api.purchaseBook(id)
-            .subscribe(function (res) {
-            _this.router.navigate(['/dashboard', 'book', '']);
-        }, function (err) {
-            console.log(err);
-        });
+        this.api.purchaseBook(id);
+        /*.subscribe(res => {
+          this.router.navigate(['/dashboard', 'book', '']);
+        }, (err) => {
+          console.log(err);
+        });*/
+        this.router.navigate(['/dashboard', 'book', '']);
     };
     BookDetailComponent.prototype.ngOnInit = function () {
-        /*var id=this.route.snapshot.params['id'];
-        var id2=this.route.snapshot.params['id2'];
-        alert('Details: id: '+id+' id2: '+id2);*/
         this.getBookDetails(this.route.snapshot.params['id2']);
-        /*var ans='xx';
-        ans=this.route.snapshot.params.id;
-        alert('ans: '+ans);*/
     };
     BookDetailComponent.prototype.getParameter = function () {
         console.log('parameter: ' + this.parameter);
@@ -1389,20 +1383,21 @@ var httpOptions = {
 };
 var apiUrl = '/api';
 var ApiService = /** @class */ (function () {
+    //user2:Object;
     function ApiService(http, authService) {
         this.http = http;
         this.authService = authService;
     }
     ApiService.prototype.ngOnInit = function () {
-        var _this = this;
-        this.authService.getProfile().subscribe(function (profile) {
-            _this.user2 = profile.user;
-        }, function (err) {
-            console.log(err);
-            return false;
-        });
-        console.log('_profile: ' + this.user2);
-        alert('test api service');
+        /*this.authService.getProfile().subscribe(profile=>{
+        this.user2 = profile.user;
+      },
+      err=>{
+        console.log(err);
+        return false;
+      });
+      console.log('_profile: '+this.user2);
+        alert('test api service');*/
     };
     ApiService.prototype.handleError = function (error) {
         if (error.error instanceof ErrorEvent) {
@@ -1444,21 +1439,44 @@ var ApiService = /** @class */ (function () {
         return this.http.delete(url, httpOptions)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
+    /*purchaseBook(id: string): Observable<any> {
+      //return this.getBook(id);
+      var url = `${apiUrl}/purchase/${id}`;
+      var book=this.getBook(id);
+      var email,username, user_id='x';
+      this.authService.getProfile().subscribe(profile => {
+        email = profile.user.email;
+        username=profile.user.username;
+        user_id=profile.user._id;
+        alert('profile: '+username+", "+email+', '+user_id);
+      }, err=>{
+        console.log(err);
+        return false;
+      });
+      url+='/'+user_id;
+      alert('url: '+url);
+      return this.http.get(url, httpOptions).pipe(
+        map(this.extractData),
+        catchError(this.handleError));
+    }*/
     ApiService.prototype.purchaseBook = function (id) {
+        var _this = this;
         //return this.getBook(id);
         var url = apiUrl + "/purchase/" + id;
         var book = this.getBook(id);
-        var email, username;
+        var email, username, user_id = 'x';
         this.authService.getProfile().subscribe(function (profile) {
             email = profile.user.email;
             username = profile.user.username;
-            alert('profile: ' + username + ", " + email);
+            user_id = profile.user._id;
+            alert('profile: ' + username + ", " + email + ', ' + user_id);
+            url += '/' + user_id;
+            alert('url: ' + url);
+            _this.http.get(url, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(_this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(_this.handleError));
         }, function (err) {
             console.log(err);
             return false;
         });
-        //alert("User1: "+user1);
-        return this.http.get(url, /*'book',*/ httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     ApiService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

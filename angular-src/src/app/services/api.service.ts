@@ -1,11 +1,11 @@
-import { Injectable , OnInit } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable, of, throwError, observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
-import {AuthService} from './auth.service';
+import { AuthService } from './auth.service';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 const apiUrl = '/api';
 
@@ -14,12 +14,12 @@ const apiUrl = '/api';
 })
 export class ApiService implements OnInit {
 
-  user2:Object;
+  //user2:Object;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.getProfile().subscribe(profile=>{
+    /*this.authService.getProfile().subscribe(profile=>{
     this.user2 = profile.user;
   },
   err=>{
@@ -27,7 +27,7 @@ export class ApiService implements OnInit {
     return false;
   });
   console.log('_profile: '+this.user2);
-    alert('test api service');
+    alert('test api service');*/
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -47,7 +47,7 @@ export class ApiService implements OnInit {
 
   private extractData(res: Response) {
     const body = res;
-    return body || { };
+    return body || {};
   }
 
   getBooks(): Observable<any> {
@@ -74,10 +74,10 @@ export class ApiService implements OnInit {
   updateBook(id, data): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.put(url, data, httpOptions)
-    .pipe(
-    catchError(this.handleError)
-    );
-    }
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
   deleteBook(id: string): Observable<{}> {
     const url = `${apiUrl}/${id}`;
@@ -87,22 +87,44 @@ export class ApiService implements OnInit {
       );
   }
 
-  purchaseBook(id: string): Observable<any> {
+  /*purchaseBook(id: string): Observable<any> {
     //return this.getBook(id);
-    const url = `${apiUrl}/purchase/${id}`;
+    var url = `${apiUrl}/purchase/${id}`;
     var book=this.getBook(id);
-    var email,username;
+    var email,username, user_id='x';
     this.authService.getProfile().subscribe(profile => {
       email = profile.user.email;
       username=profile.user.username;
-      alert('profile: '+username+", "+email);
+      user_id=profile.user._id;
+      alert('profile: '+username+", "+email+', '+user_id);
     }, err=>{
       console.log(err);
       return false;
     });
-    //alert("User1: "+user1);
-    return this.http.get(url, /*'book',*/ httpOptions).pipe(
+    url+='/'+user_id;
+    alert('url: '+url);
+    return this.http.get(url, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
+  }*/
+  purchaseBook(id: string): void {
+    //return this.getBook(id);
+    var url = `${apiUrl}/purchase/${id}`;
+    var book = this.getBook(id);
+    var email, username, user_id = 'x';
+    this.authService.getProfile().subscribe(profile => {
+      email = profile.user.email;
+      username = profile.user.username;
+      user_id = profile.user._id;
+      alert('profile: ' + username + ", " + email + ', ' + user_id);
+      url += '/' + user_id;
+      alert('url: ' + url);
+      this.http.get(url, httpOptions).pipe(
+        map(this.extractData),
+        catchError(this.handleError));
+    }, err => {
+      console.log(err);
+      return false;
+    });
   }
 }

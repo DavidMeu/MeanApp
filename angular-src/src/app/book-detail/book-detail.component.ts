@@ -35,21 +35,16 @@ export class BookDetailComponent implements OnInit {
 
   purchaseBook(id) {
     this.api.purchaseBook(id)
-      .subscribe(res => {
+      /*.subscribe(res => {
         this.router.navigate(['/dashboard', 'book', '']);
       }, (err) => {
         console.log(err);
-      });
+      });*/
+      this.router.navigate(['/dashboard', 'book', '']);
   }
 
   ngOnInit() {
-    /*var id=this.route.snapshot.params['id'];
-    var id2=this.route.snapshot.params['id2'];
-    alert('Details: id: '+id+' id2: '+id2);*/
     this.getBookDetails(this.route.snapshot.params['id2']);
-    /*var ans='xx';
-    ans=this.route.snapshot.params.id;
-    alert('ans: '+ans);*/
   }
 
   getParameter() {

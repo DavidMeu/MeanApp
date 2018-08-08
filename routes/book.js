@@ -2,10 +2,15 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Book = require('../models/Book.js');
+var OrderedBook= require('../models/OrderedBook.js');
 
 /* Purchase Book*/
-router.get('/purchase/:id', function(req, res, next) {
-  console.log(req.params.id);
+router.get('/purchase/:book/:user', function(req, res, next) {
+  console.log('id: '+req.params.book+', id2: '+req.params.user);
+  OrderedBook.create({book_id: req.params.book, user_id: req.params.user}, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
   res.json('true');
 });
 
