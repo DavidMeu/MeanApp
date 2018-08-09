@@ -1,20 +1,21 @@
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs';
 import { $ } from 'protractor';
 
 export class BookDataSource extends DataSource<any> {
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private parameter: string) {
     super();
   }
 
   connect() {
-    return this.api.getBooks();
+    if (this.parameter == '/search')
+      return this.api.getBooks();
+    return this.api.getUserBooks();
   }
 
   disconnect() {
-
   }
 }
 
@@ -28,30 +29,37 @@ export class BookComponent implements OnInit {
   books: any;
   displayedColumns = ['isbn', 'title', 'author'];
 
-  dataSource = new BookDataSource(this.api);
-  constructor(private api: ApiService) { }
-
   @Input()
   public parameter: string;
 
-  ngOnInit() {
-    this.api.getBooks()
-      .subscribe(res => {
-        console.log(res);
-        this.books = res;
-      }, err => {
-        console.log(err);
-      });
+  //dataSource = new BookDataSource(this.api, this.parameter);
+  dataSource;
+  constructor(private api: ApiService) { }
 
-      var param=this.getParameter();
-      document.getElementById('addBookButton').addEventListener("click", function(){
-        //alert(param);
-        //alert('element:'+ this.parentElement.localName);
-      });
+  ngOnInit() {
+    this.dataSource= new BookDataSource(this.api, this.parameter);
+    /*if (this.parameter == '/search')
+      this.api.getBooks()
+        .subscribe(res => {
+          console.log(res);
+          this.books = res;
+        }, err => {
+          console.log(err);
+        });
+    else if(this.parameter == '/dashboard') {
+      //alert('else if(this.parameter == "/dashboard") {')
+      this.api.getUserBooks()
+        .subscribe(res => {
+          console.log(res);
+          this.books = res;
+        }, err => {
+          console.log(err);
+        });
+    }*/
   }
 
   getParameter() {
-    console.log('parameter: '+this.parameter);
+    console.log('parameter: ' + this.parameter);
     return this.parameter;
   }
 }

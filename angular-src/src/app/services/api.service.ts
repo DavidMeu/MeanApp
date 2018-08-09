@@ -15,7 +15,7 @@ const apiUrl = '/api';
 export class ApiService implements OnInit {
 
   //user2:Object;
-
+  static user;
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit() {
@@ -56,6 +56,12 @@ export class ApiService implements OnInit {
       catchError(this.handleError));
   }
 
+  getUserBooks() : Observable<any> {
+    const url = `${apiUrl}/userbooks/${ApiService.user._id}`;
+    return this.http.get(url, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
   getBook(id: string): Observable<any> {
     const url = `${apiUrl}/${id}`;
     //alert("url: "+url);
@@ -87,44 +93,10 @@ export class ApiService implements OnInit {
       );
   }
 
-  /*purchaseBook(id: string): Observable<any> {
-    //return this.getBook(id);
+  purchaseBook(id: string): Observable<any> {
     var url = `${apiUrl}/purchase/${id}`;
-    var book=this.getBook(id);
-    var email,username, user_id='x';
-    this.authService.getProfile().subscribe(profile => {
-      email = profile.user.email;
-      username=profile.user.username;
-      user_id=profile.user._id;
-      alert('profile: '+username+", "+email+', '+user_id);
-    }, err=>{
-      console.log(err);
-      return false;
-    });
-    url+='/'+user_id;
-    alert('url: '+url);
-    return this.http.get(url, httpOptions).pipe(
+    return this.http.get(url + '/' + ApiService.user._id, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
-  }*/
-  purchaseBook(id: string): void {
-    //return this.getBook(id);
-    var url = `${apiUrl}/purchase/${id}`;
-    var book = this.getBook(id);
-    var email, username, user_id = 'x';
-    this.authService.getProfile().subscribe(profile => {
-      email = profile.user.email;
-      username = profile.user.username;
-      user_id = profile.user._id;
-      alert('profile: ' + username + ", " + email + ', ' + user_id);
-      url += '/' + user_id;
-      alert('url: ' + url);
-      this.http.get(url, httpOptions).pipe(
-        map(this.extractData),
-        catchError(this.handleError));
-    }, err => {
-      console.log(err);
-      return false;
-    });
   }
 }

@@ -11,12 +11,9 @@ export class DashboardComponent implements OnInit {
 
   innerContent: string;
   constructor(private route: ActivatedRoute, private api: ApiService, private router: Router) {
-    //this.innerContent=this.route.snapshot.params['id'];
     router.events.subscribe((val)=>{
       if(val instanceof NavigationEnd) {
         this.innerContent=this.route.snapshot.params['id'];
-        //var id2=this.route.snapshot.params['id2'];
-        //alert('id: '+neww+ ' id2: '+id2);
       }
     });
    }
@@ -24,10 +21,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.innerContent=this.route.snapshot.params['id'];
     console.log('innerConetnt: '+ this.innerContent);
-
-    /*document.getElementById('test').addEventListener("click", function(){
-      document.getElementById('test').innerHTML=x();
-    });*/
   }
 
   getInnerContent() {

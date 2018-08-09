@@ -35,12 +35,15 @@ export class BookDetailComponent implements OnInit {
 
   purchaseBook(id) {
     this.api.purchaseBook(id)
-      /*.subscribe(res => {
+      .subscribe(res => {
         this.router.navigate(['/dashboard', 'book', '']);
+        if(JSON.stringify(res)=='"true"')
+          alert('Book has been successfully purchased!');
+        else alert('You already own this book!');
       }, (err) => {
         console.log(err);
-      });*/
-      this.router.navigate(['/dashboard', 'book', '']);
+      });
+      //this.router.navigate(['/dashboard', 'book', '']);
   }
 
   ngOnInit() {
