@@ -23,6 +23,7 @@ const app = express();
 
 const users = require('./routes/users');
 const apiRouter = require('./routes/book');
+const chat = require('./routes/chat');
 
 const port = 3000;
 

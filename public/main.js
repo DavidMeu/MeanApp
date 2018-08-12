@@ -738,7 +738,7 @@ var BookComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "/* Fix user-agent */\r\n\r\n* {\r\n  box-sizing: border-box;\r\n}\r\n\r\nhtml {\r\n  font-weight: 300;\r\n  -webkit-font-smoothing: antialiased;\r\n}\r\n\r\nhtml, input {\r\n  font-family:\r\n    \"HelveticaNeue-Light\",\r\n    \"Helvetica Neue Light\",\r\n    \"Helvetica Neue\",\r\n    Helvetica,\r\n    Arial,\r\n    \"Lucida Grande\",\r\n    sans-serif;\r\n}\r\n\r\nhtml, body {\r\n  height: 100%;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nul {\r\n  list-style: none;\r\n  word-wrap: break-word;\r\n}\r\n\r\n/* Pages */\r\n\r\n.pages {\r\n  height: 100%;\r\n  margin: 0;\r\n  padding: 0;\r\n  width: 100%;\r\n}\r\n\r\n.page {\r\n  height: 100%;\r\n  position: absolute;\r\n  width: 100%;\r\n}\r\n\r\n/* Login Page */\r\n\r\n.login.page {\r\n  background-color: #000;\r\n}\r\n\r\n.login.page .form {\r\n  height: 100px;\r\n  margin-top: -100px;\r\n  position: absolute;\r\n\r\n  text-align: center;\r\n  top: 50%;\r\n  width: 100%;\r\n}\r\n\r\n.login.page .form .usernameInput {\r\n  background-color: transparent;\r\n  border: none;\r\n  border-bottom: 2px solid #fff;\r\n  outline: none;\r\n  padding-bottom: 15px;\r\n  text-align: center;\r\n  width: 400px;\r\n}\r\n\r\n.login.page .title {\r\n  font-size: 200%;\r\n}\r\n\r\n.login.page .usernameInput {\r\n  font-size: 200%;\r\n  letter-spacing: 3px;\r\n}\r\n\r\n.login.page .title, .login.page .usernameInput {\r\n  color: #fff;\r\n  font-weight: 100;\r\n}\r\n\r\n/* Chat page */\r\n\r\n.chat.page {\r\n  display: none;\r\n}\r\n\r\n/* Font */\r\n\r\n.messages {\r\n  font-size: 150%;\r\n}\r\n\r\n.inputMessage {\r\n  font-size: 100%;\r\n}\r\n\r\n.log {\r\n  color: gray;\r\n  font-size: 70%;\r\n  margin: 5px;\r\n  text-align: center;\r\n}\r\n\r\n/* Messages */\r\n\r\n.chatArea {\r\n  height: 100%;\r\n  padding-bottom: 60px;\r\n}\r\n\r\n.messages {\r\n  height: 100%;\r\n  margin: 0;\r\n  overflow-y: scroll;\r\n  padding: 10px 20px 10px 20px;\r\n}\r\n\r\n.message.typing .messageBody {\r\n  color: gray;\r\n}\r\n\r\n.username {\r\n  font-weight: 700;\r\n  overflow: hidden;\r\n  padding-right: 15px;\r\n  text-align: right;\r\n}\r\n\r\n/* Input */\r\n\r\n.inputMessage {\r\n  border: 10px solid #000;\r\n  bottom: 0;\r\n  height: 60px;\r\n  left: 0;\r\n  outline: none;\r\n  padding-left: 10px;\r\n  position: absolute;\r\n  right: 0;\r\n  width: 100%;\r\n}\r\n"
 
 /***/ }),
 
@@ -749,7 +749,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  chat works!\n</p>\n"
+module.exports = "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Socket.IO Chat Example</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <ul class=\"pages\">\n    <li class=\"chat page\">\n      <div class=\"chatArea\">\n        <ul class=\"messages\"></ul>\n      </div>\n      <input class=\"inputMessage\" placeholder=\"Type here...\"/>\n    </li>\n    <li class=\"login page\">\n      <div class=\"form\">\n        <h3 class=\"title\">What's your nickname?</h3>\n        <input class=\"usernameInput\" type=\"text\" maxlength=\"14\" />\n      </div>\n    </li>\n  </ul>\n\n  <script src=\"https://code.jquery.com/jquery-1.10.2.min.js\"></script>\n  <script src=\"/socket.io/socket.io.js\"></script>\n  <script src=\"/main.js\"></script>\n</body>\n</html>\n"
 
 /***/ }),
 
