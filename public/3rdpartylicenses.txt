@@ -127,7 +127,7 @@ MIT
 MIT
 MIT
 
-@angular/core@6.1.0
+@angular/core@6.0.9
 MIT
 MIT
 
@@ -139,7 +139,7 @@ MIT
 MIT
 MIT
 
-@angular/platform-browser-dynamic@6.1.0
+@angular/platform-browser-dynamic@6.0.5
 MIT
 MIT
 

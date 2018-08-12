@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\r\n<div class=\"container\">\r\n    <flash-messages></flash-messages>\r\n    <router-outlet></router-outlet>\r\n</div>\r\n"
+module.exports = "<app-navbar></app-navbar>\n<div class=\"container\">\n    <flash-messages></flash-messages>\n    <router-outlet></router-outlet>\n</div>\n"
 
 /***/ }),
 
@@ -118,13 +118,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _book_detail_book_detail_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./book-detail/book-detail.component */ "./src/app/book-detail/book-detail.component.ts");
 /* harmony import */ var _book_edit_book_edit_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./book-edit/book-edit.component */ "./src/app/book-edit/book-edit.component.ts");
 /* harmony import */ var _search_search_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./search/search.component */ "./src/app/search/search.component.ts");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _chat_chat_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./chat/chat.component */ "./src/app/chat/chat.component.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -188,6 +190,11 @@ var appRoutes = [
         path: "book-edit",
         component: _book_edit_book_edit_component__WEBPACK_IMPORTED_MODULE_23__["BookEditComponent"],
         data: { title: "Edit Book" }
+    },
+    {
+        path: "chat",
+        component: _chat_chat_component__WEBPACK_IMPORTED_MODULE_25__["ChatComponent"],
+        data: { title: "Chat" }
     }
 ];
 function tokenGetter() {
@@ -210,7 +217,8 @@ var AppModule = /** @class */ (function () {
                 _book_create_book_create_component__WEBPACK_IMPORTED_MODULE_21__["BookCreateComponent"],
                 _book_detail_book_detail_component__WEBPACK_IMPORTED_MODULE_22__["BookDetailComponent"],
                 _book_edit_book_edit_component__WEBPACK_IMPORTED_MODULE_23__["BookEditComponent"],
-                _search_search_component__WEBPACK_IMPORTED_MODULE_24__["SearchComponent"]
+                _search_search_component__WEBPACK_IMPORTED_MODULE_24__["SearchComponent"],
+                _chat_chat_component__WEBPACK_IMPORTED_MODULE_25__["ChatComponent"]
             ],
             imports: [
                 _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(appRoutes),
@@ -219,16 +227,16 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_13__["ReactiveFormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClientModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_15__["BrowserAnimationsModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatInputModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatTableModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatPaginatorModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatSortModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatProgressSpinnerModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatIconModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatButtonModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatCardModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatFormFieldModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatToolbarModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatInputModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatTableModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatPaginatorModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatSortModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatProgressSpinnerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatIconModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatCardModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatFormFieldModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatToolbarModule"],
                 angular2_flash_messages__WEBPACK_IMPORTED_MODULE_17__["FlashMessagesModule"].forRoot(),
                 _angular_http__WEBPACK_IMPORTED_MODULE_3__["HttpModule"],
                 _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"],
@@ -723,6 +731,69 @@ var BookComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/chat/chat.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/chat/chat.component.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/chat/chat.component.html":
+/*!******************************************!*\
+  !*** ./src/app/chat/chat.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  chat works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/chat/chat.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/chat/chat.component.ts ***!
+  \****************************************/
+/*! exports provided: ChatComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatComponent", function() { return ChatComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ChatComponent = /** @class */ (function () {
+    function ChatComponent() {
+    }
+    ChatComponent.prototype.ngOnInit = function () {
+    };
+    ChatComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-chat',
+            template: __webpack_require__(/*! ./chat.component.html */ "./src/app/chat/chat.component.html"),
+            styles: [__webpack_require__(/*! ./chat.component.css */ "./src/app/chat/chat.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], ChatComponent);
+    return ChatComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/dashboard/dashboard.component.css":
 /*!***************************************************!*\
   !*** ./src/app/dashboard/dashboard.component.css ***!
@@ -935,7 +1006,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Login</h2>\r\n<form (submit)=\"onLoginSubmit()\">\r\n  <div class=\"form-group\">\r\n    <label>Username</label>\r\n    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"username\" name=\"username\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Password</label>\r\n    <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\r\n  </div>\r\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Login\">\r\n</form>"
+module.exports = "<h2 class=\"page-header\">Login</h2>\n<form (submit)=\"onLoginSubmit()\">\n  <div class=\"form-group\">\n    <label>Username</label>\n    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"username\" name=\"username\">\n  </div>\n  <div class=\"form-group\">\n    <label>Password</label>\n    <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Login\">\n</form>"
 
 /***/ }),
 
@@ -1091,7 +1162,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">Book Store App</a>\r\n    </div>\r\n    <div id=\"navbar\" class=\"collapse navbar-collapse\">\r\n      <ul class=\"nav navbar-nav navbar-left\">\r\n        <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/']\">Home</a></li>\r\n      </ul>\r\n\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n        <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/search', 'book', '']\">Search</a></li>\r\n        <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/dashboard', 'book', '']\">Dashboard</a></li>\r\n        <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/profile']\">Profile</a></li>\r\n        <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/login']\">Login</a></li>\r\n        <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/register']\">Register</a></li>\r\n        <li *ngIf=\"authService.loggedIn()\"><a (click)=\"onLogoutClick()\" href=\"#\">Logout</a></li>\r\n\r\n      </ul>\r\n    </div><!--/.nav-collapse -->\r\n  </div>\r\n</nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-default\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">Book Store App</a>\r\n    </div>\r\n    <div id=\"navbar\" class=\"collapse navbar-collapse\">\r\n      <ul class=\"nav navbar-nav navbar-left\">\r\n        <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/']\">Home</a></li>\r\n      </ul>\r\n\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n        <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/chat']\">Chat</a></li>\r\n        <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/search', 'book', '']\">Search</a></li>\r\n        <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/dashboard', 'book', '']\">Dashboard</a></li>\r\n        <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/profile']\">Profile</a></li>\r\n        <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/login']\">Login</a></li>\r\n        <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/register']\">Register</a></li>\r\n        <li *ngIf=\"authService.loggedIn()\"><a (click)=\"onLogoutClick()\" href=\"#\">Logout</a></li>\r\n\r\n      </ul>\r\n    </div><!--/.nav-collapse -->\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -1182,7 +1253,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <ng-container *ngIf=\"user\">\r\n  <h2 class=\"page-header\"> {{user.name}} </h2>\r\n  <ul class=\"list-group\">\r\n    <li class=\"list-group-item\">Username: {{user.username}}</li>\r\n    <li class=\"list-group-item\">Email: {{user.email}}</li>\r\n  </ul>\r\n</ng-container>\r\n</div>\r\n\r\n\r\n"
+module.exports = "<div>\n    <ng-container *ngIf=\"user\">\n  <h2 class=\"page-header\"> {{user.name}} </h2>\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\">Username: {{user.username}}</li>\n    <li class=\"list-group-item\">Email: {{user.email}}</li>\n  </ul>\n</ng-container>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -1258,7 +1329,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Register</h2>\r\n<form (submit)=\"onRegisterSubmit()\">\r\n  <div class=\"form-group\">\r\n    <label>Name</label>\r\n    <input type=\"text\" [(ngModel)]=\"name\" name=\"name\" class=\"form-control\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Username</label>\r\n    <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Email</label>\r\n    <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\" >\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Password</label>\r\n    <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\r\n  </div>\r\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\r\n</form>\r\n"
+module.exports = "<h2 class=\"page-header\">Register</h2>\n<form (submit)=\"onRegisterSubmit()\">\n  <div class=\"form-group\">\n    <label>Name</label>\n    <input type=\"text\" [(ngModel)]=\"name\" name=\"name\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label>Username</label>\n    <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label>Email</label>\n    <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\" >\n  </div>\n  <div class=\"form-group\">\n    <label>Password</label>\n    <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n</form>\n"
 
 /***/ }),
 
@@ -1367,7 +1438,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Search</h2>\n<p>Search for books here</p>\n<app-book *ngIf=\"getInnerContent()=='book'\" [parameter]='\"/search\"'></app-book>\n<app-book-create *ngIf=\"getInnerContent()=='book-create'\" [parameter]='\"/search\"'></app-book-create>\n<app-book-detail *ngIf=\"getInnerContent()=='book-details'\" [parameter]='\"/search\"'></app-book-detail>\n<app-book-edit *ngIf=\"getInnerContent()=='book-edit'\" [parameter]='\"/search\"'></app-book-edit>"
+module.exports = "<h2 class=\"page-header\">Search</h2>\r\n<p>Search for books here</p>\r\n<app-book *ngIf=\"getInnerContent()=='book'\" [parameter]='\"/search\"'></app-book>\r\n<app-book-create *ngIf=\"getInnerContent()=='book-create'\" [parameter]='\"/search\"'></app-book-create>\r\n<app-book-detail *ngIf=\"getInnerContent()=='book-details'\" [parameter]='\"/search\"'></app-book-detail>\r\n<app-book-edit *ngIf=\"getInnerContent()=='book-edit'\" [parameter]='\"/search\"'></app-book-edit>"
 
 /***/ }),
 
@@ -1734,7 +1805,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\שונות\מכון לב סמסטרים קודמים\תשעח א\הנדסת תוכנה לאינטרנט\project2\angular-src\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\David Meushar\Desktop\My_Mean_App\angular-src\src\main.ts */"./src/main.ts");
 
 
 /***/ })

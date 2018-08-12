@@ -27,6 +27,7 @@ import { BookCreateComponent } from "./book-create/book-create.component";
 import { BookDetailComponent } from "./book-detail/book-detail.component";
 import { BookEditComponent } from "./book-edit/book-edit.component";
 import { SearchComponent } from './search/search.component';
+import { ChatComponent } from './chat/chat.component';
 
 //import {MatIconModule} from '@angular/material/icon';
 import {
@@ -79,6 +80,11 @@ const appRoutes: Routes = [
     path: "book-edit",
     component: BookEditComponent,
     data: { title: "Edit Book" }
+  },
+  {
+    path: "chat",
+    component: ChatComponent,
+    data: { title: "Chat" }
   }
 ];
 
@@ -99,7 +105,8 @@ export function tokenGetter() {
     BookCreateComponent,
     BookDetailComponent,
     BookEditComponent,
-    SearchComponent
+    SearchComponent,
+    ChatComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
