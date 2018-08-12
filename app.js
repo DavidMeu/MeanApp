@@ -44,6 +44,7 @@ require('./config/passport')(passport);
 
 app.use('/users',users);
 app.use('/api', apiRouter);
+app.use('/chat', chat);
 
 //index route
 app.get('/', (req, res) => {
@@ -52,5 +53,4 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
     console.log('Server started on port '+port);
-
 });
